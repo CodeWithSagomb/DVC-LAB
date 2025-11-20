@@ -1,0 +1,15 @@
+stages:
+  prepare:
+    cmd: python src/preprocess.py data/iris.json data/iris_clean.csv
+    deps:
+    - data/iris.json
+    - src/preprocess.py
+    outs:
+    - data/iris_clean.csv
+  train:
+    cmd: python src/train.py data/iris_clean.csv data/model.pkl
+    deps:
+    - data/iris_clean.csv
+    - src/train.py
+    outs:
+    - data/model.pkl
